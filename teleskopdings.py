@@ -1,5 +1,5 @@
-import time, threading, ctypes, RPi.GPIO as GPIO, math, St, Winkel as Wi
-#import gpsThread, parallel as pa
+import time, threading, ctypes, math,StSerial as St, Winkel as Wi
+#import gpsThread, parallel as pa, RPi.GPIO as GPIO
 
 libc = ctypes.CDLL('libc.so.6')
 
@@ -23,10 +23,12 @@ print('press strg+c to exit')
 WCalc = Wi.Winkel(1.42,0.7,time.time()*1000,56)
 #gpsp  = gpsThread.GpsPoller()
 
-Stepper1 = St.Stepper(St1s,St1d)
+Stepper1 = St.Stepper('A','/dev/ttyUSB0')
+Stepper2 = St.Stepper('B','/dev/ttyUSB0')
+#Stepper1 = St.Stepper(St1s,St1d)
 ##StepThread1 = threading.Thread(target=Stepper1.run)
 ##StepThread1.start()
-Stepper2 = St.Stepper(St2s,St2d)
+#Stepper2 = St.Stepper(St2s,St2d)
 ##StepThread2 = threading.Thread(target=Stepper2.run)
 ##StepThread2.start()
 WinkelThread = threading.Thread(target=WCalc.run)
