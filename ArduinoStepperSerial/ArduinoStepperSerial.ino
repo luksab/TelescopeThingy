@@ -46,10 +46,14 @@ void loop() {
 
 void stepY() {
   digitalWrite(Y_STEP_PIN, HIGH);
+  delay(1);
   digitalWrite(Y_STEP_PIN, LOW);
+  delay(1);
 }
 
 void stepX() {
+  delay(1);
   digitalWrite(X_STEP_PIN, HIGH);
+  delay(1);
   digitalWrite(X_STEP_PIN, LOW);
 }
