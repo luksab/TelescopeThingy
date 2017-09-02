@@ -6,8 +6,6 @@
 #define Y_DIR_PIN          65
 #define Y_ENABLE_PIN       63
 
-char receivedChar;
-
 void setup() {
   pinMode(X_STEP_PIN, OUTPUT);
   pinMode(X_DIR_PIN, OUTPUT);
@@ -15,16 +13,19 @@ void setup() {
   pinMode(Y_STEP_PIN, OUTPUT);
   pinMode(Y_DIR_PIN, OUTPUT);
   pinMode(Y_ENABLE_PIN, OUTPUT);
+  Serial.begin(115200);
+  Serial.write("hello");
   digitalWrite(X_ENABLE_PIN, LOW);
   digitalWrite(X_DIR_PIN, HIGH);
   digitalWrite(Y_ENABLE_PIN, LOW);
   digitalWrite(Y_DIR_PIN, HIGH);
-  Serial.begin(115200);
 }
 
 void loop() {
+  char receivedChar;
   if (Serial.available() > 0) {
     receivedChar = Serial.read();
+    Serial.write(receivedChar);
     if (receivedChar == 'X') {
       digitalWrite(X_DIR_PIN, HIGH);
       stepX();
@@ -46,9 +47,9 @@ void loop() {
 
 void stepY() {
   digitalWrite(Y_STEP_PIN, HIGH);
-  delay(1);
+  //delay(1);
   digitalWrite(Y_STEP_PIN, LOW);
-  delay(1);
+  //delay(10);
 }
 
 void stepX() {

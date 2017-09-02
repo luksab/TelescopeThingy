@@ -1,17 +1,21 @@
-import time, threading, ctypes, math, serial
-libc = ctypes.CDLL('libc.so.6')
+import time, threading, math, serial#, ctypes
+#libc = ctypes.CDLL('libc.so.6')
+#def delay(ms):
+#  ms = int(ms*1000)
+#  libc.usleep(ms)
 def delay(ms):
-  ms = int(ms*1000)
-  libc.usleep(ms)
+  time.sleep(ms*1000)
+
 class Stepper:
   hasStopped = False
-  def __init__(self,Axis,Port):
+  def __init__(self,Axis,ser):
     self.Axis = Axis
-    self.currentW = 1.5
+    self.currentW = 0
     self.goalW = 0
-    self.ser = serial.Serial(Port,115200)
+    self.ser = ser
   def run(self):
     while not self.hasStopped:
+      time.sleep(0.5)
       if abs(self.currentW - self.goalW) > 0.0030:
         if(self.currentW - self.goalW < 0):
           self.Step(1)
@@ -32,12 +36,16 @@ class Stepper:
     print('Step')
     if(direction is 0 and self.Axis is 'A'):
       self.ser.write(b'x')
+      print(self.ser.read(1))
     elif(direction is 0 and self.Axis is 'B'):
       self.ser.write(b'y')
+      print(self.ser.read(1))
     elif(direction is 1 and self.Axis is 'A'):
       self.ser.write(b'X')
+      print(self.ser.read(1))
     elif(direction is 1 and self.Axis is 'B'):
       self.ser.write(b'Y')
+      print(self.ser.read(1))
 #s=Stepper('A','/dev/ttyUSB0')
 #while(True):
 #  s.Step()

@@ -1,30 +1,34 @@
-import time, threading, ctypes, math,StSerial as St, Winkel as Wi
+import time, threading, math,StSerial as St, serial, Winkel as Wi#, ctypes
 #import gpsThread, parallel as pa, RPi.GPIO as GPIO
 
-libc = ctypes.CDLL('libc.so.6')
+#libc = ctypes.CDLL('libc.so.6')
 
 St1s = 18
 St1d = 16
 St2s = 11
 St2d = 13
 
+#def delay(ms):
+#  ms = int(ms*1000)
+#  libc.usleep(ms)
 def delay(ms):
-  ms = int(ms*1000)
-  libc.usleep(ms)
+  time.sleep(ms/1000)
 
 ##p = pa.parr()
 ##while not p.calc():
 ##  delay(100)
 
 print('Hi!')
-time.sleep(3)
+time.sleep(0)
 print('press strg+c to exit')
 
 WCalc = Wi.Winkel(1.42,0.7,time.time()*1000,56)
 #gpsp  = gpsThread.GpsPoller()
 
-Stepper1 = St.Stepper('A','/dev/ttyUSB0')
-Stepper2 = St.Stepper('B','/dev/ttyUSB0')
+s = serial.Serial('COM6',115200)
+
+Stepper1 = St.Stepper('A',s)
+Stepper2 = St.Stepper('B',s)
 #Stepper1 = St.Stepper(St1s,St1d)
 ##StepThread1 = threading.Thread(target=Stepper1.run)
 ##StepThread1.start()
@@ -54,6 +58,6 @@ except KeyboardInterrupt:
     #gpsp.join()
     #StepThread1.join()
     #StepThread2.join()
-    GPIO.cleanup()
+    #GPIO.cleanup()
     WinkelThread.join()
     print('bye!')
