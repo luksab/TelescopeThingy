@@ -1,10 +1,6 @@
-import time, threading, math, serial#, ctypes
-#libc = ctypes.CDLL('libc.so.6')
-#def delay(ms):
-#  ms = int(ms*1000)
-#  libc.usleep(ms)
+import time, threading, math, serial
 def delay(ms):
-  time.sleep(ms*1000)
+  time.sleep(ms/1000)
 
 class Stepper:
   hasStopped = False
@@ -45,7 +41,3 @@ class Stepper:
     elif(direction is 1 and self.Axis is 'B'):
       self.ser.write(b'Y')
       #print(self.ser.read(1))
-#s=Stepper('A','/dev/ttyUSB0')
-#while(True):
-#  s.Step()
-#  delay(500)

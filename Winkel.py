@@ -1,9 +1,5 @@
 from sympy import *
-import math, time#, ctypes
-#libc = ctypes.CDLL('libc.so.6')
-#def delay(ms):
-#  ms = int(ms*1000)
-#  libc.usleep(ms)
+import math, time
 def delay(ms):
   time.sleep(ms/1000)
 class Winkel:
@@ -22,24 +18,6 @@ class Winkel:
         c = math.acos((P.T*Y)/((math.hypot(1, P[2]))*(math.hypot(Y[1], Y[2]))))
         goalW1 = math.pi/2 - math.acos((P.T*N)/((math.hypot(1, P[2]))*(math.sqrt((N[0]**2)+(N[1]**2)+1))))
         goalW2 = math.acos(math.cos(goalW1)*math.cos(c)+math.sin(goalW1)*math.sin(c)*math.tan(goalW1)*math.cot(c))
-        #self.s1 = ((math.sin(beta) * math.cos(alpha) * math.cos(epsilon))
-        #    - (math.cos(beta) * math.cos(alpha) * math.sin(phi) * math.sin(epsilon))
-        #    + (math.sin(alpha) * math.cos(phi) * math.sin(epsilon)))
-        #self.s2 = ((math.sin(beta) * math.cos(alpha) * math.sin(phi) * math.sin(epsilon))
-        #    + (math.cos(beta) * math.cos(alpha) * ((math.pow(math.cos(phi),2) * (1 - math.cos(epsilon))) + math.cos(epsilon)))
-        #    + (math.sin(alpha) * math.cos(phi) * math.sin(phi) * (1 - math.cos(epsilon))))
-        #self.s3 = (- (math.sin(beta) * math.cos(alpha) * math.cos(phi) * math.cos(epsilon))
-        #    + (math.cos(beta) * math.cos(alpha) * math.sin(phi) * math.cos(phi) * (1 - math.cos(epsilon))) 
-        #    + (math.sin(alpha) * ((math.pow(math.sin(phi),2) * (1 - math.cos(epsilon)) + math.cos(epsilon)))))
-        #if not self.s2 == 0:
-        #   self.goalW2 = math.atan(self.s1/self.s2)
-        #if not self.s2 == 0 or not self.s2 == 0:
-        #    self.goalW1 = math.atan(self.s3/math.hypot(self.s1,self.s2))
-        #print(s1)
-        #print(s2)
-        #print(s3)
-        #print(self.goalW1)
-        #print(self.goalW2)
     def calc(self,a, b, c, d):
       alpha  = a
       beta   = b
