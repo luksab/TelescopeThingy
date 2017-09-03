@@ -33,19 +33,18 @@ class Stepper:
           self.Step(0)
           self.currentW -= 0.002
   def Step(self,direction = 1):
-    print('Step')
     if(direction is 0 and self.Axis is 'A'):
       self.ser.write(b'x')
-      print(self.ser.read(1))
+      #print(self.ser.read(1))
     elif(direction is 0 and self.Axis is 'B'):
       self.ser.write(b'y')
-      print(self.ser.read(1))
+      #print(self.ser.read(1))
     elif(direction is 1 and self.Axis is 'A'):
       self.ser.write(b'X')
-      print(self.ser.read(1))
+      #print(self.ser.read(1))
     elif(direction is 1 and self.Axis is 'B'):
       self.ser.write(b'Y')
-      print(self.ser.read(1))
+      #print(self.ser.read(1))
 #s=Stepper('A','/dev/ttyUSB0')
 #while(True):
 #  s.Step()
