@@ -1,25 +1,23 @@
-import time, threading, math,StSerial as St, serial, Winkel as Wi, StellariumServer as SS#, ctypes
-#import gpsThread, parallel as pa, RPi.GPIO as GPIO
+import time, threading, math,St, Winkel as Wi, StellariumServer as SS, ctypes
+#import gpsThread, parallel as pa
+import RPi.GPIO as GPIO
+libc = ctypes.CDLL('libc.so.6')
 
-#libc = ctypes.CDLL('libc.so.6')
+St1s = 0
+St1d = 1
+St2s = 2
+St2d = 3
 
-St1s = 18
-St1d = 16
-St2s = 11
-St2d = 13
-
-#def delay(ms):
-#  ms = int(ms*1000)
-#  libc.usleep(ms)
 def delay(ms):
-  time.sleep(ms/1000)
+  ms = int(ms*1000)
+  libc.usleep(ms)
 
 def stop():
-  #gpsp.running = False
+  gpsp.running = False
   Stepper1.hasStopped = True
   Stepper2.hasStopped = True
   WCalc.hasStopped = True
-  #gpsp.join()
+  gpsp.join()
   #StepThread1.join()
   #StepThread2.join()
   #GPIO.cleanup()
@@ -31,7 +29,7 @@ def stop():
 ##  delay(100)
 
 print('Hi!')
-time.sleep(0)
+time.sleep(3)
 print('press strg+c to exit')
 
 coord = [0,0]
@@ -40,14 +38,10 @@ ss = SS.SS(coord)
 WCalc = Wi.Winkel(1.42,0.7,time.time()*1000,56)
 #gpsp  = gpsThread.GpsPoller()
 
-s = serial.Serial('COM1',115200,timeout=0)
-
-Stepper1 = St.Stepper('A',s)
-Stepper2 = St.Stepper('B',s)
-#Stepper1 = St.Stepper(St1s,St1d)
+Stepper1 = St.Stepper(St1s,St1d)
 ##StepThread1 = threading.Thread(target=Stepper1.run)
 ##StepThread1.start()
-#Stepper2 = St.Stepper(St2s,St2d)
+Stepper2 = St.Stepper(St2s,St2d)
 ##StepThread2 = threading.Thread(target=Stepper2.run)
 ##StepThread2.start()
 WinkelThread = threading.Thread(target=WCalc.run)
@@ -55,7 +49,7 @@ WinkelThread.start()
 SSThread = threading.Thread(target=ss.run)
 SSThread.start()
 try:
-    #gpsp.start()
+    gpsp.start()
     while True:
       Stepper1.goalW = WCalc.goalW1
       Stepper2.goalW = WCalc.goalW2
