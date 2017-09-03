@@ -1,11 +1,9 @@
 from sympy import *
-import math, time#, ctypes
-#libc = ctypes.CDLL('libc.so.6')
-#def delay(ms):
-#  ms = int(ms*1000)
-#  libc.usleep(ms)
+import math, time, ctypes
+libc = ctypes.CDLL('libc.so.6')
 def delay(ms):
-  time.sleep(ms/1000)
+  ms = int(ms*1000)
+  libc.usleep(ms)
 class Winkel:
     def calcW(self,a, b, c, d):
         alpha  = a
