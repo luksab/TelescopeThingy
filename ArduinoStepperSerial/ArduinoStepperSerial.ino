@@ -35,11 +35,11 @@ void loop() {
       stepX();
     }
     else if (receivedChar == 'Y') {
-      digitalWrite(X_DIR_PIN, HIGH);
+      digitalWrite(Y_DIR_PIN, HIGH);
       stepY();
     }
     else if (receivedChar == 'y') {
-      digitalWrite(X_DIR_PIN, LOW);
+      digitalWrite(Y_DIR_PIN, LOW);
       stepY();
     }
   }
