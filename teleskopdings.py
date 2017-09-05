@@ -3,21 +3,24 @@ import time, threading, math,St, Winkel as Wi, StellariumServer as SS, ctypes
 import RPi.GPIO as GPIO
 libc = ctypes.CDLL('libc.so.6')
 
-St1s = 0
-St1d = 1
-St2s = 2
-St2d = 3
+St1s = 3
+St1d = 5
+St2s = 10
+St2d = 8
+
+StepsPerRotationA = 16*200*10
+StepsPerRotationB = 16*200*72
 
 def delay(ms):
   ms = int(ms*1000)
   libc.usleep(ms)
 
 def stop():
-  gpsp.running = False
+  #gpsp.running = False
   Stepper1.hasStopped = True
   Stepper2.hasStopped = True
   WCalc.hasStopped = True
-  gpsp.join()
+  #gpsp.join()
   #StepThread1.join()
   #StepThread2.join()
   #GPIO.cleanup()
@@ -35,13 +38,13 @@ print('press strg+c to exit')
 coord = [0,0]
 ss = SS.SS(coord)
 
-WCalc = Wi.Winkel(1.42,0.7,time.time()*1000,56)
+WCalc = Wi.Winkel(0,0,time.time(),50.8228)
 #gpsp  = gpsThread.GpsPoller()
 
-Stepper1 = St.Stepper(St1s,St1d)
+Stepper1 = St.Stepper(St1s,St1d,StepsPerRotationA)
 ##StepThread1 = threading.Thread(target=Stepper1.run)
 ##StepThread1.start()
-Stepper2 = St.Stepper(St2s,St2d)
+Stepper2 = St.Stepper(St2s,St2d,StepsPerRotationB)
 ##StepThread2 = threading.Thread(target=Stepper2.run)
 ##StepThread2.start()
 WinkelThread = threading.Thread(target=WCalc.run)
@@ -49,13 +52,15 @@ WinkelThread.start()
 SSThread = threading.Thread(target=ss.run)
 SSThread.start()
 try:
-    gpsp.start()
+    #gpsp.start()
     while True:
       Stepper1.goalW = WCalc.goalW1
       Stepper2.goalW = WCalc.goalW2
       Stepper1.runOnce()
       Stepper2.runOnce()
-      print(coord[0],"  ",coord[1])
+      #print(coord[0],"  ",coord[1])
+      WCalc.Ca = coord[0]
+      WCalc.Cb = coord[1]
       #print('1: ',Stepper1.goalW - Stepper1.currentW)
       #print('2: ',Stepper2.goalW - Stepper2.currentW)
       #print('latitude    ' , gpsp.gpsd.fix.latitude)
