@@ -12,7 +12,7 @@ class Winkel:
         dt = datetime.datetime.now() - self.start_time
         UT = ((dt.seconds + dt.microseconds / 1000000.0)/3600)
         self.goalW1 = math.asin(math.sin(DEC)*math.sin(LAT)+math.cos(DEC)*math.cos(LAT)*math.cos(100.46+0.985647*self.diff+LONG+15*UT-RA))
-        self.goalW2 = math.acos((math.sin(DEC)-math.sin(ALT)*math.sin(LAT))/(math.cos(ALT)*math.cos(LAT)))
+        self.goalW2 = math.acos((math.sin(DEC)-math.sin(self.goalW1)*math.sin(LAT))/(math.cos(self.goalW1)*math.cos(LAT)))
     def __init__(self,alpha = 1.5,beta = 1,LAT=51,LON=7):
         d = (datetime.date.today()-datetime.date(2000, 1, 1))
         self.diff = d.days-0.5
