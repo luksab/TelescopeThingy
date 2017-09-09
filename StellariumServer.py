@@ -32,6 +32,7 @@ class SS:
                         print("Connection closed")
                     else:
                         try:
+                            print(data)
                             data = struct.unpack("3iIi", data)
                             #print("%x, %o" % (data[3], data[3]))
                             ra = data[3]*(M_PI/0x80000000)
@@ -45,5 +46,5 @@ class SS:
                             #i.send(reply)
                         except Exception as e:
                             #print("StellariumServer is confused")
-                            print("StellariumServer is confused:", e)
+                            #print("StellariumServer is confused:", e)
                             #self.hasStopped = True
