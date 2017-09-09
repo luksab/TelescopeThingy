@@ -36,8 +36,8 @@ class Winkel:
         self.goalW1 = math.pi / 2
         self.goalW2 = math.pi / 2
         self.hasStopped = False
-        self.Ca = alpha
-        self.Cb = beta
+        self.Ca = beta
+        self.Cb = alpha
         self.Cc = LAT
         self.Cd = LON
         self.Ce = gamma
