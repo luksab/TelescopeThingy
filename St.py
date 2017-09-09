@@ -21,7 +21,7 @@ class Stepper:
   def run(self):
     while not self.hasStopped:
       if abs(self.currentW - self.goalW) > ((1/self.StepsPerRotation)*1.5):
-        if(self.currentW - self.goalW < 0):
+        if((self.currentW - self.goalW) < 0):
           self.Step(1)
           self.currentW += 1/self.StepsPerRotation
         else:
