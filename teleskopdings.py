@@ -8,8 +8,8 @@ St1d = 8
 St2s = 3
 St2d = 5
 
-StepsPerRotationA = 2*200*10# A=1=LeftRight
-StepsPerRotationB = 1*200*15
+StepsPerRotationA = 16*200*10#A=1=LeftRight
+StepsPerRotationB = 16*200*15
 
 def delay(ms):
   ms = int(ms*1000)

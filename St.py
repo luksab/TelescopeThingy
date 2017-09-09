@@ -23,19 +23,19 @@ class Stepper:
       if abs(self.currentW - self.goalW) > ((1/self.StepsPerRotation)*1.5):
         if(self.currentW - self.goalW) < 0:
           self.Step(1)
-          self.currentW += 1/self.StepsPerRotation
+          self.currentW += 2*math.PI/self.StepsPerRotation
         else:
           self.Step(0)
-          self.currentW -= 1/self.StepsPerRotation
+          self.currentW -= 2*math.PI/self.StepsPerRotation
       delay(1/200)
   def runOnce(self):
     if abs(self.currentW - self.goalW) > ((1/self.StepsPerRotation)*1.5):
         if(self.currentW - self.goalW) < 0:
           self.Step(1)
-          self.currentW += 1/self.StepsPerRotation
+          self.currentW += 2*math.PI/self.StepsPerRotation
         else:
           self.Step(0)
-          self.currentW -= 1/self.StepsPerRotation
+          self.currentW -= 2*math.PI/self.StepsPerRotation
   def Step(self,direction = 1):
     if(direction is 0):
       direction = False
