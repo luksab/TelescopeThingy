@@ -20,10 +20,12 @@ def stop():
   Stepper1.hasStopped = True
   Stepper2.hasStopped = True
   WCalc.hasStopped = True
+  ss.hasStopped = True
   #gpsp.join()
   #StepThread1.join()
   #StepThread2.join()
   #GPIO.cleanup()
+  SSThread.join()
   WinkelThread.join()
   print('bye!')
 

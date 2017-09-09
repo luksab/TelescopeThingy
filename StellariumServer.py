@@ -44,5 +44,5 @@ class SS:
                             #print repr(reply)
                             #i.send(reply)
                         except Exception:
-                            print("bye")
-                            self.hasStopped = True
+                            print("StellariumServer is confused")
+                            #self.hasStopped = True
