@@ -9,7 +9,7 @@ def delay(ms):
 #  time.sleep(ms/1000)
 class Winkel:
     def calc(self,RA, DEC, LAT, LONG): #right ascension, declination, lattitude, longitude, days since J2000, universal time
-        dt = datetime.now() - self.start_time
+        dt = datetime.datetime.now() - self.start_time
         UT = ((dt.seconds + dt.microseconds / 1000000.0)/3600)
         ALT = math.asin(math.sin(DEC)*math.sin(LAT)+math.cos(DEC)*math.cos(LAT)*math.cos(100.46+0.985647*self.diff+LONG+15*UT-RA))
         AZ = math.acos((math.sin(DEC)-math.sin(ALT)*math.sin(LAT))/(math.cos(ALT)*math.cos(LAT)))
