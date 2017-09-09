@@ -43,7 +43,7 @@ class SS:
                             #reply = struct.pack("3iIii", 24, 0, time.time(), data[3], data[4], 0)
                             #print repr(reply)
                             #i.send(reply)
-                        except Exception:
+                        except Exceptionn as e:
                             #print("StellariumServer is confused")
-                            print("StellariumServer is confused:", sys.exc_info()[0])
+                            print("StellariumServer is confused:", e)
                             #self.hasStopped = True
