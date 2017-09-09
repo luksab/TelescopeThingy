@@ -55,6 +55,7 @@ WinkelThread = threading.Thread(target=WCalc.run)
 WinkelThread.start()
 SSThread = threading.Thread(target=ss.run)
 SSThread.start()
+delay(100)
 try:
     #gpsp.start()
     while True:
