@@ -6,6 +6,7 @@ from math import *
 M_PI =  3.1415926535897932385
 class SS:    
     def __init__(self,coord):
+        self.hasStopped = False
         self.coord = coord
         self.current_position = []
         self.open_sockets = []
@@ -14,7 +15,7 @@ class SS:
         self.listening_socket.bind( ("", 10001) )
         self.listening_socket.listen(5)
 
-    hasStopped = False
+    
     def run(self):
         while not self.hasStopped:
             # Waits for I/O being available for reading from any socket object.
