@@ -9,7 +9,7 @@ St2s = 10
 St2d = 8
 
 StepsPerRotationA = 16*200*10
-StepsPerRotationB = 16*200*72
+StepsPerRotationB = 16*200*15
 
 def delay(ms):
   ms = int(ms*1000)
