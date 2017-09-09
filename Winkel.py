@@ -16,7 +16,7 @@ class Winkel:
     def __init__(self,alpha = 1.5,beta = 1,LAT=51,LON=7):
         d = (datetime.date.today()-datetime.date(2000, 1, 1))
         self.diff = d.days-0.5
-        d = datetime(2000,1,1)
+        d = datetime.datetime(2000,1,1)
         self.start_time = d.replace(hour=12, minute=0)
         self.s1 = 5
         self.s2 = 5
