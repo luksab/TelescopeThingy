@@ -24,10 +24,10 @@ class Stepper:
         print(self.currentW - self.goalW)
         if((self.currentW - self.goalW) < 0):
           self.Step(1)
-          self.currentW += 1/self.StepsPerRotation
+          self.currentW -= 1/self.StepsPerRotation
         else:
           self.Step(0)
-          self.currentW -= 1/self.StepsPerRotation
+          self.currentW += 1/self.StepsPerRotation
       delay(1/200)
   def runOnce(self):
     if abs(self.currentW - self.goalW) > ((1/self.StepsPerRotation)*1.5):
