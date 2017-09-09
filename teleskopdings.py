@@ -42,7 +42,7 @@ print('press strg+c to exit')
 coord = [0,0]
 ss = SS.SS(coord)
 
-WCalc = Wi.Winkel(0,0,time.time(),50.8228)
+WCalc = Wi.Winkel(0.76,1.56)
 #gpsp  = gpsThread.GpsPoller()
 
 Stepper1 = St.Stepper(St1s,St1d,StepsPerRotationA)

@@ -28,7 +28,7 @@ class Winkel:
         self.Cb = beta
         self.Cc = LAT
         self.Cd = LON
-    def initWithNonParallel(self,alpha = 1.5,beta = 1,LAT = 51,LON = 7,gamma = 0,delta = 0):
+    def initWithNonParallel(self,alpha = 0.76,beta = 1.56,LAT = 51,LON = 7,gamma = 0,delta = 0):
         self.today = datetime.date.today()
         self.s1 = 5
         self.s2 = 5
