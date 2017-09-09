@@ -60,6 +60,8 @@ try:
     while True:
       Stepper1.goalW = WCalc.goalW1
       Stepper2.goalW = WCalc.goalW2
+      print(Stepper1.goalW)
+      print(Stepper2.goalW)
       Stepper1.runOnce()
       Stepper2.runOnce()
       #print(coord[0],"  ",coord[1])
