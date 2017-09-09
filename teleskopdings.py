@@ -8,7 +8,7 @@ St1d = 8
 St2s = 3
 St2d = 5
 
-StepsPerRotationA = 16*200*10
+StepsPerRotationA = 1*200*10
 StepsPerRotationB = 16*200*15
 
 def delay(ms):
@@ -61,7 +61,7 @@ try:
     while True:
       Stepper1.goalW = WCalc.goalW1
       Stepper2.goalW = WCalc.goalW2
-      print(Stepper1.currentW)
+      #print(Stepper1.currentW)
       Stepper1.runOnce()
       Stepper2.runOnce()
       #print(coord[0],"  ",coord[1])

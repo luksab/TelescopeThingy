@@ -5,11 +5,11 @@ def delay(ms):
   libc.usleep(ms)
 class Stepper:
   hasStopped = False
-  currentW = 0
-  goalW = 0
   def __init__(self,Sts, Std, StepsPerRotation):
     self.StepsPerRotation = StepsPerRotation
     GPIO.setmode(GPIO.BOARD)
+    self.currentW = 0
+    self.goawlW = 0
     self.Sts = Sts
     self.Std = Std
     #GPIO.setup(Sts, GPIO.OUT, initial=GPIO.LOW)
@@ -31,7 +31,8 @@ class Stepper:
       delay(1/200)
   def runOnce(self):
     if abs(self.currentW - self.goalW) > ((1/self.StepsPerRotation)*1.5):
-        if(self.currentW - self.goalW < 0):
+        print(self.currentW - self.goalW)
+        if((self.currentW - self.goalW)< 0):
           self.Step(1)
           self.currentW += 1/self.StepsPerRotation
         else:
