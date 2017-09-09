@@ -16,6 +16,7 @@ def delay(ms):
   libc.usleep(ms)
 
 def stop():
+  print('bye!')
   #gpsp.running = False
   Stepper1.hasStopped = True
   Stepper2.hasStopped = True
@@ -27,7 +28,7 @@ def stop():
   #GPIO.cleanup()
   SSThread.join()
   WinkelThread.join()
-  print('bye!')
+  print('bye!(Now really)')
 
 ##p = pa.parr()
 ##while not p.calc():
