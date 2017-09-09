@@ -44,6 +44,6 @@ class Stepper:
     #print('S ', self.Sts,' D ',direction)
     GPIO.output(self.Std, direction)
     GPIO.output(self.Sts, 1)
-    delay(5)
+    #delay(5)
     GPIO.output(self.Sts, 0)
-    delay(5)
+    #delay(5)

@@ -3,10 +3,10 @@ import time, threading, math,St, Winkel as Wi, StellariumServer as SS, ctypes
 import RPi.GPIO as GPIO
 libc = ctypes.CDLL('libc.so.6')
 
-St1s = 3
-St1d = 5
-St2s = 10
-St2d = 8
+St1s = 10
+St1d = 8
+St2s = 3
+St2d = 5
 
 StepsPerRotationA = 16*200*10
 StepsPerRotationB = 16*200*15
