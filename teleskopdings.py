@@ -26,9 +26,9 @@ def stop():
   #StepThread1.join()
   #StepThread2.join()
   #GPIO.cleanup()
-  SSThread.join()
-  print('bye!(Not really)')
   WinkelThread.join()
+  print('bye!(Not really)')
+  SSThread.join()
   print('bye!(Now really)')
 
 ##p = pa.parr()
