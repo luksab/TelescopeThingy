@@ -27,7 +27,7 @@ class SS:
                 else:
                     data = i.recv(1024)
                     #print(data)
-                    if data == "":
+                    if data == b'':
                         self.open_sockets.remove(i)
                         print("Connection closed")
                     else:
