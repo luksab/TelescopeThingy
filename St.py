@@ -37,6 +37,7 @@ class Stepper:
           self.Step(0)
           self.currentW -= 1/self.StepsPerRotation
   def Step(self,direction = 1):
+    print(self.goalW)
     if(direction is 0):
       direction = False
     else:
