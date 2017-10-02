@@ -1,6 +1,6 @@
 import time, threading, math,St, Winkel as Wi, StellariumServer as SS, ctypes
 #import gpsThread, parallel as pa
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO, HTTPHandler
 libc = ctypes.CDLL('libc.so.6')
 
 St1s = 10
@@ -51,10 +51,13 @@ Stepper1 = St.Stepper(St1s,St1d,StepsPerRotationA)
 Stepper2 = St.Stepper(St2s,St2d,StepsPerRotationB)
 ##StepThread2 = threading.Thread(target=Stepper2.run)
 ##StepThread2.start()
+http = HTTPHandler.HTTPHandler(Stepper1,Stepper2)
 WinkelThread = threading.Thread(target=WCalc.run)
 WinkelThread.start()
 SSThread = threading.Thread(target=ss.run)
 SSThread.start()
+HTTPThread = threading.Thread(target=http.run)
+HTTPThread.start()
 delay(100)
 try:
     #gpsp.start()
