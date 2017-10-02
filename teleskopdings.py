@@ -22,10 +22,12 @@ def stop():
   Stepper2.hasStopped = True
   WCalc.hasStopped = True
   ss.hasStopped = True
+  http.stop()
   #gpsp.join()
   #StepThread1.join()
   #StepThread2.join()
   #GPIO.cleanup()
+  HTTPThread.join()
   WinkelThread.join()
   print('bye!(Not really)')
   SSThread.join()
