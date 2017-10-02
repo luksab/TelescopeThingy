@@ -9,13 +9,13 @@ class HTTPHandler(BaseHTTPRequestHandler):
         self.end_headers()
         # Send message back to client
         message = "Hello world!"
-        # Write content as utf-8 data
-        self.wfile.write(bytes(message, "utf8"))
         arr = self.path.split('/')
         if arr[0] is "up":
           self.HTTPWrapper.up(arr[1])
         else:
           self.HTTPWrapper.right(arr[1])
+        # Write content as utf-8 data
+        self.wfile.write(bytes(self.path, "utf8"))
         return
 class HTTPWrapper:
   def __init__(self,Stepper1,Stepper2):
