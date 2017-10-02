@@ -22,4 +22,4 @@ class HTTPWrapper:
       self.httpd = HTTPServer(server_address, HTTPHandler)
       self.httpd.serve_forever()
   def stop(self):
-      httpd.server_close()
+      self.httpd.server_close()

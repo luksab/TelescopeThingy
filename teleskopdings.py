@@ -26,7 +26,7 @@ def stop():
   #gpsp.join()
   #StepThread1.join()
   #StepThread2.join()
-  #GPIO.cleanup()
+  GPIO.cleanup()
   HTTPThread.join()
   WinkelThread.join()
   print('bye!(Not really)')
