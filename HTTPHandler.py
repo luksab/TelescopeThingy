@@ -3,10 +3,10 @@ class HTTPHandler(BaseHTTPRequestHandler):
   def __init__(self,Stepper1,Stepper2):
       self.Stepper1 = Stepper1
       self.Stepper2 = Stepper2
-  def run(self):
       server_address = ('', 8081)
-      httpd = HTTPServer(server_address, HTTPHandler)
-      httpd.serve_forever()
+      self.httpd = HTTPServer(server_address, HTTPHandler)
+  def run(self):
+      self.httpd.serve_forever()
   def do_GET(self):
         # Send response status code
         self.send_response(200)
