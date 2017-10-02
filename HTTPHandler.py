@@ -21,3 +21,5 @@ class HTTPWrapper:
       server_address = ('', 8081)
       self.httpd = HTTPServer(server_address, HTTPHandler)
       self.httpd.serve_forever()
+  def stop(self):
+      httpd.server_close()
