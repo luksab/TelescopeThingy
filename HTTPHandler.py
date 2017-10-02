@@ -7,11 +7,15 @@ class HTTPHandler(BaseHTTPRequestHandler):
         # Send headers
         self.send_header('Content-type','text/html')
         self.end_headers()
- 
         # Send message back to client
-        message = self.path
+        message = "Hello world!"
         # Write content as utf-8 data
         self.wfile.write(bytes(message, "utf8"))
+        arr = self.path.split('/')
+        if arr[0] is "up":
+          self.HTTPWrapper.up(arr[1])
+        else:
+          self.HTTPWrapper.right(arr[1])
         return
 class HTTPWrapper:
   def __init__(self,Stepper1,Stepper2):
@@ -23,3 +27,7 @@ class HTTPWrapper:
       self.httpd.serve_forever()
   def stop(self):
       self.httpd.server_close()
+  def up(x):
+      self.Stepper1.currentW -= x/1000
+  def right(y):
+      self.Stepper2.currentW -= y/1000
