@@ -11,9 +11,9 @@ class HTTPHandler(BaseHTTPRequestHandler):
         message = "Hello world!"
         arr = self.path.split('/')
         if arr[0] is "up":
-          self.HTTPWrapper.up(arr[1])
+          #self.HTTPWrapper.up(arr[1])
         else:
-          self.HTTPWrapper.right(arr[1])
+          #self.HTTPWrapper.right(arr[1])
         # Write content as utf-8 data
         self.wfile.write(bytes(self.path, "utf8"))
         return
