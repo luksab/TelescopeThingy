@@ -10,11 +10,11 @@ class HTTPHandler(BaseHTTPRequestHandler):
         # Send message back to client
         message = "Hello world!"
         arr = self.path.split('/')
-        if arr[0] is "up":
-          print("up "+arr[1])
+        if arr[1] == "up":
+          print("up "+arr[2])
           #self.HTTPWrapper.up(arr[1])
-        else:
-          print("right "+arr[1])
+        elif arr[1] == "right":
+          print("right "+arr[2])
           #self.HTTPWrapper.right(arr[1])
         # Write content as utf-8 data
         self.wfile.write(bytes(self.path, "utf8"))
@@ -33,3 +33,5 @@ class HTTPWrapper:
       self.Stepper1.currentW -= x/1000
   def right(y):
       self.Stepper2.currentW -= y/1000
+h = HTTPWrapper("","")
+h.run()
